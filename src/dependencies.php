@@ -3,7 +3,7 @@
 // Use Libs
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use \Respect\Validation\Validator;
+use \Respect\Validation\Validator as Val;
 use \Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use \Cocur\Slugify\Slugify;
 
@@ -146,7 +146,8 @@ $container['view'] = function ($container) {
 };
 
 $container['validator'] = function ($container) {
-    return new \Turbo\Validation\Validator;
+    Val::with('\\Turbo\\Validation\\Rules');
+    return new \Turbo\Validation\Validator();
 };
 
 // Controllers
