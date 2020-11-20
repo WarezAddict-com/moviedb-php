@@ -1,0 +1,53 @@
+{# Login #}
+
+{% extends "templates/app.twig" %}
+
+{% block title %}Login to your account!{% endblock %}
+
+{% block content %}
+
+    <div class="container" id="login">
+        <div class="row w-100 p-0 m-auto justify-content-center">
+            <div class="col-12 text-center">
+
+                <p class="h3 font-weight-bold">Login</p>
+
+            </div>
+        </div>
+
+        <div class="row w-100 p-0 m-auto justify-content-center">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-3 m-auto bg-dark text-white rounded shadow">
+
+                <form action="/login" method="post">
+
+                    <div class="form-group font-weight-bold">
+                        <label>Email</label>
+                        <input name="email" class="form-control" placeholder="your@email.com" type="email" autocomplete="off">
+                    </div>
+
+                    <div class="form-group font-weight-bold">
+                        <label>Password</label>
+                        <input name="password" class="form-control" placeholder="password" type="password">
+                    </div>
+
+                    <div class="form-group font-weight-bold">
+                        <div class="checkbox">
+                          <label> <input type="checkbox">  Remember Me?</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ csrf }}
+                    </div>
+
+                    <div class="form-group w-100 p-0 m-auto text-center justify-content-center">
+                        <button type="submit" class="btn btn-lg btn-primary font-weight-bold">Login</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

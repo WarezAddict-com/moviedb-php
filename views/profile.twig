@@ -1,0 +1,47 @@
+{# Profile #}
+
+{% extends "templates/app.twig" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+    <div class="container" id="profile">
+
+        {% if auth.check %}
+
+            <div class="row w-100 p-0 m-auto justify-content-center">
+                <div class="col-12 text-center">
+                    <p class="h3 font-weight-bold">Your Profile</p>
+                </div>
+            </div>
+
+            <div class="row w-100 p-0 m-auto justify-content-center">
+
+                <div class="col-sm-12 col-md-6 p-0 m-auto text-center" id="userAvatar">
+                    {{ auth.user.gravatar(auth.user.email, 256)|raw }}
+                </div>
+
+                <div class="col-sm-12 col-md-6 p-0 m-auto text-left" id="userInfo">
+                    <p><b>Name:</b> {{ auth.user.name }}</p>
+                    <p><b>Email:</b> {{ auth.user.email }}</p>
+                    <p><b>Created:</b> {{ auth.user.created_at }}</p>
+                    <p><b>Last Seen:</b> {{ auth.user.updated_at }}</p>
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="row w-100 p-0 m-auto justify-content-center">
+                <div class="col-12 text-center">
+                    <p class="h4 font-weight-bold">Error!</p>
+                    <p>Not Authorized! Please <a href="{{ baseUrl }}/login">login</a>.</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}
