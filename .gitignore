@@ -1,5 +1,4 @@
 /bin/
-/cache/*
 composer.phar
 composer.lock
 /vendor/
