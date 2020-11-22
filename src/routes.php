@@ -5,8 +5,6 @@ $app->group('', function () {
     $this->get('/', 'HomeController:index')->setName('home');
     $this->get('/search', 'SearchController:get')->setName('search.get');
     $this->post('/search', 'SearchController:post')->setName('search.post');
-    $this->post('/contact', 'ContactController:post')->setName('contact.post');
-    $this->get('/contact', 'ContactController:get')->setName('contact.get');
 });
 
 $app->group('', function () {
