@@ -148,6 +148,21 @@ textarea:focus {
   margin: 0px auto !important;
 }
 
+.card {
+  min-width: 300px !important;
+  min-height: 450px !important;
+  color: #FFFFFF !important;
+  background: rgba(0, 0, 0, 1.0) !important;
+  box-shadow: rgba(0, 0, 0, 1.0) 3px 3px 6px !important;
+  transition: box-shadow 0.25s !important;
+  border-radius: 3px !important;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 1.0) 5px 5px 10px !important;
+  transition: box-shadow 0.25s !important;
+}
+
 /** Login **/
 #login {
   width: 100% !important;

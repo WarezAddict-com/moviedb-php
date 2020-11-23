@@ -24,7 +24,42 @@ class MovieController extends \Turbo\Controllers\Controller
             'results' => $mData,
         ];
 
-        return $this->container->view->render($response, 'details.twig', $data);
+        return $this->container->view->render($response, 'results.twig', $data);
+    }
+
+    public function movieInfo(Request $request, Response $response, array $args)
+    {
+        if (getenv('APP_DEBUG') == 'yes') {
+            $dmode = true;
+        } else {
+            $dmode = false;
+        }
+
+        // Get Name
+        $movieName = $request->getAttribute('name');
+
+        // Un-Slugify Name
+        $unslug = str_replace('-', ' ', $movieName);
+
+        // Clean It
+        $cleanName = filter_var($unslug, FILTER_SANITIZE_STRING);
+
+        // Results
+        $results = '';
+
+        if ($cleanName) {
+
+            $client = $this->tmdb;
+            $searchRepo = new \Tmdb\Repository\SearchRepository($client);
+            $repo = $searchRepo->getApi();
+            $res = $repo->searchMulti($cleanName);
+            $results = $res['results'];
+        }
+
+        return $this->container->view->render($response, 'results.twig', [
+            'debugMode' => $dmode,
+            'results' => $results,
+        ]);
     }
 
     public function topRated(Request $request, Response $response, array $args)
